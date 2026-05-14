@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Smart Farm Advisor</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <span class="menu-btn" onclick="openMenu()">☰</span>
+
+    <div id="sideMenu" class="side-menu">
+      <span class="close-btn" onclick="closeMenu()">×</span>
+
+      <a onclick="showPage('recommendation')">🌱 Crop Recommender</a>
+      <a onclick="showPage('fertilizer')">🧪 Fertilizer Calculator</a>
+      <a onclick="showPage('expenses')">💰 Expense Calculator</a>
+    </div>
+
+    <div class="container">
+      <!-- ================= Recommendation Page ================= -->
+      <div id="recommendation" class="page active">
+        <h2>🌱 Crop Recommender</h2>
+
+        <label>Mode</label>
+        <select id="mode">
+          <option value="offline">Offline (Manual)</option>
+          <option value="online">Online (Weather API)</option>
+        </select>
+
+        <br /><br />
+
+        <label>Season</label>
+        <select id="season">
+          <option value="">---Select Season---</option>
+          <option value="rainy">Rainy</option>
+          <option value="dry">Dry</option>
+        </select>
+
+        <br /><br />
+
+        <label>Province</label>
+        <select id="province" onchange="updateSoils()">
+          <option value="">Select Province</option>
+          <option>Central</option>
+          <option>Copperbelt</option>
+          <option>Eastern</option>
+          <option>Luapula</option>
+          <option>Lusaka</option>
+          <option>Muchinga</option>
+          <option>Northern</option>
+          <option>North-Western</option>
+          <option>Southern</option>
+          <option>Western</option>
+        </select>
+
+        <br /><br />
+
+        <label>Soil Type</label>
+        <select id="soil" disabled onchange="window.selectedSoil = this.value">
+          <option value="">Select Soil Type</option>
+          <option value="loam">Loam</option>
+          <option value="clay">Clay</option>
+          <option value="sandy">Sandy</option>
+          <option value="sandy loam">Sandy Loam</option>
+          <option value="clay loam">Clay Loam</option>
+          <option value="alluvial">Alluvial</option>
+        </select>
+
+        <br /><br />
+
+        <button onclick="analyzeFarm()">Get Recommendation</button>
+
+        <div id="output"></div>
+      </div>
+
+      <!-- ================= Fertilizer Page ================= -->
+    <!-- ================= Fertilizer Page ================= -->
+<div id="fertilizer" class="page">
+  <h2>🧪 Fertilizer Calculator</h2>
+
+  <label>Crop</label>
+  <select id="crop">
+    <option value="">Select Crop</option>
+    <option value="Maize">Maize</option>
+    <option value="Rice">Rice</option>
+    <option value="Soybeans">Soybeans</option>
+    <option value="Groundnuts">Groundnuts</option>
+    <option value="Cabbage">Cabbage</option>
+    <option value="Tomatoes">Tomatoes</option>
+    <option value="Carrots">Carrots</option>
+    <option value="Watermelon">Watermelon</option>
+    <option value="Onions">Onions</option>
+    <option value="Cassava">Cassava</option>
+    <option value="Wheat">Wheat</option>
+    <option value="Sunflower">Sunflower</option>
+    <option value="Cotton">Cotton</option>
+    <option value="Peas">Peas</option>
+     <option value="Sugarcane">Sugarcane</option>
+     <option value="Banana">Banana</option>
+  </select>
+
+  <br /><br />
+
+  <label>Land Size (Acres)</label>
+  <input type="text" id="acres" class="numInput" placeholder="Enter acres" />
+
+  <br /><br />
+
+  <button onclick="calculateFertilizer()">Calculate Fertilizer</button>
+
+  <div id="fertilizerOutput"></div>
+</div>
+
+
+<!-- ================= Expense Page ================= -->
+<div id="expenses" class="page">
+  <h2>💰 Expense Calculator</h2>
+
+  <label>Seed cost:</label>
+  <input type="text" id="seed" class="numInput" placeholder="Enter seed cost" />
+
+  <label>Fertilizer cost:</label>
+  <input type="text" id="fertilizerCost" class="numInput" placeholder="Enter fertilizer cost" />
+
+  <label>Labour cost:</label>
+  <input type="text" id="Labour" class="numInput" placeholder="Enter labour cost" />
+
+  <label>Machinery cost:</label>
+  <input type="text" id="machinery" class="numInput" placeholder="Enter machinery cost" />
+
+  <label>Water cost:</label>
+  <input type="text" id="water" class="numInput" placeholder="Enter water cost" />
+
+  <label>Misc cost:</label>
+  <input type="text" id="misc" class="numInput" placeholder="Enter misc cost" />
+
+  <label>Land size (Acres):</label>
+  <input type="text" id="acre" class="numInput" placeholder="Enter acres" />
+
+  <br /><br />
+
+  <button onclick="calculateExpenses()">💰Calculate Expenses</button>
+
+  <br /><br />
+
+  <div id="expenseOutput"></div>
+</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
